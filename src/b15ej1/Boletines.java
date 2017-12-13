@@ -27,21 +27,26 @@ public class Boletines {
     public void introducirBoletines(){
         JOptionPane.showMessageDialog(null, "Boletines.");
         inBoletines = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el número de boletines."));
+        
+        while (inBoletines > 17){
+            inBoletines= Double.parseDouble(JOptionPane.showInputDialog("Número de boletines totales: 17."));
+        }
+        
     }
     
     public void calcularNotaBoletines(){
         if (inBoletines > 15){
-            JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaMas90);
+            //JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaMas90);
             notaParcial = notaMas90;
         } else if (inBoletines >= 12 && inBoletines <= 15){
-            JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaEntre90y70);
+            //JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaEntre90y70);
             notaParcial = notaEntre90y70;
         } else if (inBoletines < 12){
-            JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaMenos70);
+            //JOptionPane.showMessageDialog(null, "Número de boletines: "+inBoletines+"\nNota: "+notaMenos70);
             notaParcial = notaMenos70;
         }
         
-        notaFinalBoletines = notaParcial*20/100;
+        notaFinalBoletines = notaParcial;
     }
     
 }

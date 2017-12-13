@@ -5,6 +5,7 @@
  */
 package b15ej1;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,12 +19,13 @@ public class CalculoNotas {
     PruebasPracticas pp = new PruebasPracticas(); //No hace alusión al partido popular.
     PruebasEscritas pe = new PruebasEscritas();
     Boletines bo = new Boletines();
+    DecimalFormat df = new DecimalFormat();
 
     public void CalculoNotas() {
 
         op = Integer.parseInt(JOptionPane.showInputDialog("***MENU*** \n1.-Empezar\n2.-Salir"));
 
-        while (op == 1) {
+        do {
             switch (op) {
 
                 case 1:
@@ -32,25 +34,40 @@ public class CalculoNotas {
                     bo.introducirBoletines();
                     bo.calcularNotaBoletines();
                     notaSuperFinal = pp.notaFinal + pe.notaFinalEscrita + bo.notaFinalBoletines;
-                    JOptionPane.showMessageDialog(null, "Pruebas teóricas: " + pe.notaFinalEscrita + "\nPrueba práctica: " + pp.notaFinal + "\nBoletines: " + bo.notaFinalBoletines + "\n\nNota Final: " + notaSuperFinal);
+                    JOptionPane.showMessageDialog(null, "Pruebas teóricas: " + pe.notaFinalEscrita + "\nPrueba práctica: " + pp.notaFinal + "\nBoletines: " + bo.notaFinalBoletines + "\n\nNota Final: " + df.format(notaSuperFinal));
                     break;
 
                 case 2:
                     break;
 
                 default:
-                    op = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un valor válido."));
+                    while (op != 1 || op != 2){
+                    JOptionPane.showMessageDialog(null, "Introduzca un valor válido");
+                    op = Integer.parseInt(JOptionPane.showInputDialog("***MENU*** \n1.-Empezar\n2.-Salir"));
+                    }
             }
-            
-            
-            var = JOptionPane.showConfirmDialog(null, "Quieres calcular otra nota?");
-            
-            if (var == JOptionPane.YES_OPTION){
-                op = 1;
-            }else{
+
+            //Condicion para que al escribir un 2 en el switch anterior salga del programa entero
+            if (op == 2) {
                 break;
             }
-        }
+            
+            var = JOptionPane.showConfirmDialog(null, "Quieres calcular otra nota?");
+            //Switch hecho para 
+            switch (var) {
+
+                case JOptionPane.YES_OPTION:
+                    op = 1;
+
+                case JOptionPane.NO_OPTION:
+                    break;
+
+                case JOptionPane.CANCEL_OPTION:
+                    JOptionPane.showMessageDialog(null, "Este botón no era, pero ok. Adiós.");
+                    break;
+            }
+
+        } while (op == 1);
 
     }
 }

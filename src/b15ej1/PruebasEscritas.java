@@ -19,9 +19,18 @@ public class PruebasEscritas {
     private double notaSegundo; 
     
     public void calcularNotasEscritas(){
-        JOptionPane.showMessageDialog(null, "Pruebas escritas.");
-        notaPrimero= Double.parseDouble(JOptionPane.showInputDialog("Introduzca la nota del primer examen."));      
+        JOptionPane.showMessageDialog(null, "Pruebas escritas (teoría).");
+        notaPrimero= Double.parseDouble(JOptionPane.showInputDialog("Introduzca la nota del primer examen."));
+        
+        while (notaPrimero > 10 || notaPrimero < 0){
+            notaPrimero= Double.parseDouble(JOptionPane.showInputDialog("Nota incorrecta.\nIntroduzca la nota del primer examen."));
+        }
+        
         notaSegundo= Double.parseDouble(JOptionPane.showInputDialog("Introduzca la nota del segundo examen."));
+        
+        while (notaSegundo > 10 || notaSegundo < 0){
+            notaSegundo= Double.parseDouble(JOptionPane.showInputDialog("Nota incorrecta.\nIntroduzca la nota del segundo examen."));
+        }
         
         notaParcial = (notaPrimero+notaSegundo)/2;
         

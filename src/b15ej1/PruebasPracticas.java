@@ -18,7 +18,12 @@ public class PruebasPracticas {
     
     public void calcularNotaParcial(){
         JOptionPane.showMessageDialog(null, "Prueba Práctica.");
-        notaParcial = Double.parseDouble(JOptionPane.showInputDialog("Introduzca la nota del examen."));  
+        notaParcial = Double.parseDouble(JOptionPane.showInputDialog("Introduzca la nota del examen."));
+        
+        while (notaParcial > 10 || notaParcial < 0){
+            notaParcial= Double.parseDouble(JOptionPane.showInputDialog("Nota incorrecta.\nIntroduzca la nota del examen."));
+        }
+        
         notaFinal = notaParcial*40/100;
     }
     
