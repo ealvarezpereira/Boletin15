@@ -60,10 +60,12 @@ public class CalculoNotas {
                     op = 1;
 
                 case JOptionPane.NO_OPTION:
+                    op = 2;
                     break;
 
                 case JOptionPane.CANCEL_OPTION:
                     JOptionPane.showMessageDialog(null, "Este botón no era, pero ok. Adiós.");
+                    op = 2;
                     break;
             }
 
